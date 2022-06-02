@@ -10,23 +10,23 @@ type todo = {
   status: Status;
 };
 
-const Home: NextPage = () => {
-  const [data, setData] = useState<todo>({
+const Login: NextPage = () => {
+  const [data, setData] = useState({
     // name: "",
-    text: "",
-    status: Status.OPEN,
+    email: "",
+    password: "",
   });
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const response = await fetch("/api/todos", {
+    const response = await fetch("/api/auth", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
         // name: data.name,
-        text: data.text,
-        status: data.status,
+        email: data.email,
+        password: data.password,
       }),
     });
     const result = await response.json();
@@ -38,25 +38,17 @@ const Home: NextPage = () => {
         className="w-full flex-col flex justify-center items-center gap-4"
         onSubmit={handleSubmit}
       >
-        {/* <input
-          onChange={(event) => {
-            setData({ ...data, name: event.target.value });
-          }}
-          className="w-2/3 px-8 py-3  bg-zinc-700 text-white rounded-lg"
-          type="name"
-          placeholder="Name"
-          value={data.name}
-        /> */}
         <input
           onChange={(event) => {
-            setData({ ...data, text: event.target.value });
+            setData({ ...data, email: event.target.value });
           }}
           className="w-2/3 px-8 py-3  bg-zinc-700 text-white rounded-lg"
-          type="text"
-          placeholder="text"
-          value={data.text}
+          type="email"
+          placeholder="email"
+          value={data.email}
         />
-        {/* <input
+
+        <input
           onChange={(event) => {
             setData({ ...data, password: event.target.value });
           }}
@@ -64,7 +56,7 @@ const Home: NextPage = () => {
           type="password"
           placeholder="Password"
           value={data.password}
-        /> */}
+        />
         <button
           className="w-2/3 px-8 py-3  bg-zinc-800 text-white rounded-lg"
           type="submit"
@@ -76,4 +68,4 @@ const Home: NextPage = () => {
   );
 };
 
-export default Home;
+export default Login;
