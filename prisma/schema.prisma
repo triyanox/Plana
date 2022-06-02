@@ -1,15 +1,14 @@
 generator client {
   provider = "prisma-client-js"
   previewFeatures = ["referentialIntegrity"]
+  
 }
 
 datasource db {
   provider = "mysql"
-  url = env("DATABASE_URL")
+  url = "mysql://root:password@localhost:3306/prisma"
   referentialIntegrity = "prisma"
 }
-
-
 
 model User {
     id      Int     @id @default(autoincrement())
@@ -18,28 +17,15 @@ model User {
     password String
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
-    tokens Token[]
-    Todos Todo[]
-    Sessions Session[]
+    todos Todo[]
 }
 
-
-model Token {
-    id      Int     @id @default(autoincrement())
-    token   String  @unique
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
-    expiresAt DateTime
-    type      TokenType
-    userId Int @map("user_id")
-    user      User @relation(fields: [userId], references: [id])
-    valid    Boolean
+enum Status {
+  OPEN
+  IN_PROGRESS
+  DONE
 }
 
-enum TokenType {
-  EMAIL
-  API
-}
 
 model Todo {
   id  Int @id @default(autoincrement())
@@ -50,19 +36,5 @@ model Todo {
 }
 
 
-enum Status {
-  OPEN
-  IN_PROGRESS
-  DONE
-}
 
-model Session {
-  id      Int     @id @default(autoincrement())
-  token   String  @unique
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  expiresAt DateTime
-  userId Int @map("user_id")
-  user      User @relation(fields: [userId], references: [id])
-  valid    Boolean
-}
+
