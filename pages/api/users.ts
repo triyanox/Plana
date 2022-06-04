@@ -82,5 +82,20 @@ export default async function handle(
       where: { id: user.id },
     });
     res.status(200).json("user deleted successfully");
+  } else if (req.method === "GET") {
+    const token = req.cookies.token;
+    if (!token)
+      return res.status(401).send("Access denied. No token provided.");
+    const user: any = jwt.verify(token, env.JWT_SECRET as string);
+    if (!user) return res.status(401).send("Access denied.");
+    const userData = await prisma.user.findUnique({
+      where: { id: user.id },
+    });
+
+    res.status(200).json({
+      id: userData?.id,
+      name: userData?.name,
+      email: userData?.email,
+    });
   }
 }
