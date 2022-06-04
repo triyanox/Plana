@@ -1,3 +1,84 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: "Generator";
+  src: url("/fonts/Generator-Thin.woff2") format("woff2"),
+    url("/fonts/Generator-Thin.woff") format("woff");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Generator";
+  src: url("/fonts/Generator-UltraLight.woff2") format("woff2"),
+    url("/fonts/Generator-UltraLight.woff") format("woff");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Generator";
+  src: url("/fonts/Generator-Light.woff2") format("woff2"),
+    url("/fonts/Generator-Light.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Generator";
+  src: url("/fonts/Generator-Regular.woff2") format("woff2"),
+    url("/fonts/Generator-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Generator";
+  src: url("/fonts/Generator-Medium.woff2") format("woff2"),
+    url("/fonts/Generator-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Generator";
+  src: url("/fonts/Generator-Bold.woff2") format("woff2"),
+    url("/fonts/Generator-Bold.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Generator";
+  src: url("/fonts/Generator-SemiBold.woff2") format("woff2"),
+    url("/fonts/Generator-SemiBold.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Generator";
+  src: url("/fonts/Generator-UltraBold.woff2") format("woff2"),
+    url("/fonts/Generator-UltraBold.woff") format("woff");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Generator";
+  src: url("/fonts/Generator-Black.woff2") format("woff2"),
+    url("/fonts/Generator-Black.woff") format("woff");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
