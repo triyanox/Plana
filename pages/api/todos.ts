@@ -12,6 +12,7 @@ type TodoData = {
   id: number;
   text: string;
   status: Status;
+  listId: number;
 };
 
 export default async function handler(
