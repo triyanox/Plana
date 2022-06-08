@@ -1,13 +1,13 @@
 import type { NextApiRequest, NextApiResponse } from "next";
+import { env } from "process";
 import prisma from "../../../lib/prisma";
 import jwt from "jsonwebtoken";
-import { env } from "process";
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  if (req.method === "GET") {
+  if (req.method === "POST") {
     const token = req.cookies.token;
     if (!token)
       return res.status(401).send("Access denied. No token provided.");
@@ -21,15 +21,10 @@ export default async function handler(
     if (!isExist) {
       return res.status(400).json({ error: "user not found" });
     }
-    const listId = req.query.listId as string;
-    const todos = await prisma.todo.findMany({
-      where: {
-        list: {
-          id: parseInt(listId),
-        },
-      },
-    });
-    return res.status(200).json(todos.reverse());
+    res.setHeader("Set-Cookie", [
+      `token=; Path=/; Expires=${new Date(0).toUTCString()}`,
+    ]);
+    res.status(200).json({ message: "signout success" });
   } else {
     return res.status(405).json({ error: "Method not allowed" });
   }

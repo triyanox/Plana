@@ -20,11 +20,6 @@ export default async function handler(
   res: NextApiResponse
 ) {
   if (req.method === "POST") {
-    const { text, listId } = req.body as TodoData;
-    const isValid = schema.validate({ text, listId });
-    if (isValid.error) {
-      return res.status(400).json({ error: isValid.error.message });
-    }
     const token = req.cookies.token;
     if (!token)
       return res.status(401).send("Access denied. No token provided.");
@@ -35,6 +30,12 @@ export default async function handler(
         id: user.id,
       },
     });
+    const { text, listId } = req.body as TodoData;
+    const isValid = schema.validate({ text, listId });
+    if (isValid.error) {
+      return res.status(400).json({ error: isValid.error.message });
+    }
+
     if (!isExist) {
       return res.status(400).json({ error: "user not found" });
     }
@@ -63,8 +64,7 @@ export default async function handler(
       },
     });
     res.status(200).json(todo);
-  }
-  if (req.method === "GET") {
+  } else if (req.method === "GET") {
     const token = req.cookies.token;
     if (!token)
       return res.status(401).send("Access denied. No token provided.");
@@ -83,6 +83,7 @@ export default async function handler(
         user: {
           id: user.id,
         },
+        status: Status.OPEN,
       },
       orderBy: {
         createdAt: "desc",
@@ -90,5 +91,7 @@ export default async function handler(
       take: 10,
     });
     res.status(200).json(todos);
+  } else {
+    return res.status(405).json({ error: "Method not allowed" });
   }
 }

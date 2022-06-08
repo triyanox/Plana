@@ -35,8 +35,7 @@ export default async function handler(
       return res.status(400).json({ error: "todo not found" });
     }
     res.status(200).json(todo);
-  }
-  if (req.method === "DELETE") {
+  } else if (req.method === "DELETE") {
     const token = req.cookies.token;
     if (!token)
       return res.status(401).send("Access denied. No token provided.");
@@ -60,5 +59,7 @@ export default async function handler(
       return res.status(400).json({ error: "todo not found" });
     }
     res.status(200).json(todo);
+  } else {
+    return res.status(405).json({ error: "Method not allowed" });
   }
 }
