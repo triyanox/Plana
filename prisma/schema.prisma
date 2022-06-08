@@ -17,7 +17,7 @@ model User {
     password String
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
-    Lists List[]
+    lists List[]
 }
 
 enum Status {
@@ -30,7 +30,7 @@ model Todo {
   id  Int @id @default(autoincrement())
   text String
   status Status
-  List List @relation(fields: [listId], references: [id])
+  list List @relation(fields: [listId], references: [id])
   listId Int @map("list_id")
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -41,7 +41,7 @@ model List {
   name String
   user    User @relation(fields: [userId], references: [id])
   userId Int @map("user_id")
-  Todos Todo[]
+  todos Todo[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
