@@ -6,7 +6,7 @@ generator client {
 
 datasource db {
   provider = "mysql"
-  url = "mysql://root:password@localhost:3306/prisma"
+  url = env("DATABASE_URL")
   referentialIntegrity = "prisma"
 }
 
