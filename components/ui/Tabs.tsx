@@ -1,24 +1,90 @@
-import Tab from "./Tab";
+import Tab, { TabSm } from "./Tab";
 import { BiSquareRounded } from "react-icons/bi";
 import { CgToday, CgMathPlus } from "react-icons/cg";
 import { RiSettings4Fill } from "react-icons/ri";
-
+import { BsLaptopFill, BsFillSunFill, BsMoonStars } from "react-icons/bs";
+import { useMediaQuery } from "react-responsive";
 export const HomeTab = () => {
   return <Tab icon={<BiSquareRounded className="text-3xl" />} text="Home" />;
+};
+
+import { useSelectedList } from "../hooks/SelectedList";
+import { useMenu } from "../hooks/Menu";
+
+export const ListTab = (props: {
+  list: {
+    id: number;
+    name: string;
+    userId: number;
+    createdAt: string;
+    updatedAt: string;
+  };
+}) => {
+  const { setSeletedList } = useSelectedList();
+  const { setIsActive } = useMenu();
+  const isMobile = useMediaQuery({ maxWidth: 1024 });
+  return (
+    <Tab
+      onClick={() => {
+        setSeletedList(props.list);
+        isMobile && setIsActive(false);
+      }}
+      icon={<BiSquareRounded className="text-3xl" />}
+      text={props.list.name}
+    />
+  );
 };
 
 export const RecentTab = () => {
   return <Tab icon={<CgToday className="text-3xl" />} text="Recent" />;
 };
 
-export const CreateTab = () => {
+export const CreateTab = (props: { onclick: () => void }) => {
   return (
-    <Tab icon={<CgMathPlus className="text-3xl" />} text="Create new list" />
+    <Tab
+      onClick={props.onclick}
+      icon={<CgMathPlus className="text-3xl" />}
+      text="New List"
+    />
   );
 };
 
-export const SettingTab = () => {
+export const SettingTab = (props: { onclick: () => void }) => {
   return (
-    <Tab icon={<RiSettings4Fill className="text-3xl" />} text="Settings" />
+    <Tab
+      onClick={props.onclick}
+      icon={<RiSettings4Fill className="text-3xl" />}
+      text="Settings"
+    />
+  );
+};
+
+export const DarkThemeTab = (props: { onclick: () => void }) => {
+  return (
+    <TabSm
+      onClick={props.onclick}
+      icon={<BsMoonStars className="text-2xl" />}
+      text="Dark"
+    />
+  );
+};
+
+export const LightThemeTab = (props: { onclick: () => void }) => {
+  return (
+    <TabSm
+      onClick={props.onclick}
+      icon={<BsFillSunFill className="text-2xl" />}
+      text="Light"
+    />
+  );
+};
+
+export const SysThemeTab = (props: { onclick: () => void }) => {
+  return (
+    <TabSm
+      onClick={props.onclick}
+      icon={<BsLaptopFill className="text-2xl" />}
+      text="System"
+    />
   );
 };
