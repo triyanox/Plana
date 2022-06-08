@@ -5,11 +5,31 @@ import { RiSettings4Fill } from "react-icons/ri";
 import { BsLaptopFill, BsFillSunFill, BsMoonStars } from "react-icons/bs";
 import { useMediaQuery } from "react-responsive";
 export const HomeTab = () => {
-  return <Tab icon={<BiSquareRounded className="text-3xl" />} text="Home" />;
+  const { setSeletedList } = useSelectedList();
+  const isMobile = useMediaQuery({ maxWidth: 1024 });
+  const { setIsActive } = useMenu();
+
+  return (
+    <Tab
+      onClick={() => {
+        setSeletedList({
+          id: 0,
+          name: "",
+          userId: 0,
+          createdAt: "",
+          updatedAt: "",
+        });
+        isMobile && setIsActive(false);
+      }}
+      icon={<BiSquareRounded className="text-3xl" />}
+      text="Home"
+    />
+  );
 };
 
 import { useSelectedList } from "../hooks/SelectedList";
 import { useMenu } from "../hooks/Menu";
+import { TbChecklist } from "react-icons/tb";
 
 export const ListTab = (props: {
   list: {
@@ -29,7 +49,7 @@ export const ListTab = (props: {
         setSeletedList(props.list);
         isMobile && setIsActive(false);
       }}
-      icon={<BiSquareRounded className="text-3xl" />}
+      icon={<TbChecklist className="text-3xl" />}
       text={props.list.name}
     />
   );
