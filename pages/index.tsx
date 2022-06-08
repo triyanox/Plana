@@ -4,7 +4,7 @@ import { useUser } from "../components/hooks/User";
 import Dashboard from "../components/ui/Dashboard";
 
 const Home: NextPage = () => {
-  const user = useUser();
+  const { user } = useUser();
   return user.loggedIn ? <Dashboard /> : <HomePage />;
 };
 
