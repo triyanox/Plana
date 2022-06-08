@@ -10,6 +10,13 @@ type UserState = {
   id: number;
   name: string;
   email: string;
+  lists: {
+    id: number;
+    name: string;
+    userId: number;
+    createdAt: string;
+    updatedAt: string;
+  }[];
   loggedIn: boolean;
 };
 
@@ -18,16 +25,18 @@ function MyApp({ Component, pageProps, router }: AppProps) {
     id: 0,
     name: "",
     email: "",
+    lists: [],
     loggedIn: false,
   });
   useEffect(() => {
     http
-      .get("/api/me")
+      .get("/api/user/me")
       .then((res) => {
         setUser({
-          id: res.data.id,
-          name: res.data.name,
-          email: res.data.email,
+          id: res.data.user.id,
+          name: res.data.user.name,
+          email: res.data.user.email,
+          lists: res.data.user.lists,
           loggedIn: true,
         });
       })
@@ -36,6 +45,7 @@ function MyApp({ Component, pageProps, router }: AppProps) {
           id: 0,
           name: "",
           email: "",
+          lists: [],
           loggedIn: false,
         });
       });
@@ -56,7 +66,7 @@ function MyApp({ Component, pageProps, router }: AppProps) {
         }}
       >
         <NextThemesProvider attribute="class">
-          <UserContext.Provider value={user}>
+          <UserContext.Provider value={{ user, setUser }}>
             <Component {...pageProps} />
           </UserContext.Provider>
         </NextThemesProvider>
