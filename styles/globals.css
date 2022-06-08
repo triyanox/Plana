@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 @font-face {
   font-family: "Generator";
   src: url("/fonts/Generator-Thin.woff2") format("woff2"),
