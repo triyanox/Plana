@@ -23,3 +23,5 @@ yarn-error.log*
 .vercel
 
 *.tsbuildinfo
+prisma/migrations/migration_lock.toml
+prisma/migrations/20220604165248_plana/migration.sql
