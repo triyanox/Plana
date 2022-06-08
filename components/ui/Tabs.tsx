@@ -30,7 +30,6 @@ export const HomeTab = () => {
 import { useSelectedList } from "../hooks/SelectedList";
 import { useMenu } from "../hooks/Menu";
 import { TbChecklist } from "react-icons/tb";
-
 export const ListTab = (props: {
   list: {
     id: number;
@@ -43,8 +42,16 @@ export const ListTab = (props: {
   const { setSeletedList } = useSelectedList();
   const { setIsActive } = useMenu();
   const isMobile = useMediaQuery({ maxWidth: 1024 });
+  const DayAndMOnth = (date: string) => {
+    const d = new Date(date);
+    const day = d.getDate();
+    const month = d.toUTCString().split(" ")[2];
+    return `${day} ${month}`;
+  };
+
   return (
     <Tab
+      date={DayAndMOnth(props.list.createdAt.toString())}
       onClick={() => {
         setSeletedList(props.list);
         isMobile && setIsActive(false);

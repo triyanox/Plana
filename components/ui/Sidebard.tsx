@@ -21,11 +21,11 @@ const Sidebar = () => {
           animate={{
             translateX: 0,
             opacity: 1,
-            transformOrigin: "left",
+            transformOrigin: "center",
           }}
           exit={{
-            opacity: 0,
             translateX: "-100%",
+            opacity: 0,
           }}
           transition={{
             duration: 0.4,
@@ -34,10 +34,10 @@ const Sidebar = () => {
             stiffness: 100,
             elapsed: 1,
           }}
-          className="h-screen py-4 fixed lg:relative z-20  w-full  lg:w-2/5 xl:w-1/3  flex flex-col justify-center items-start gap-8"
+          className="h-screen fixed lg:relative z-20  w-full  lg:w-2/5 xl:w-1/3  flex flex-col justify-center items-start gap-8"
         >
-          <div className="bg-zinc-200 bg-opacity-30 backdrop-blur-xl py-8 px-4 rounded-2xl shadow-xl xl:mx-0 dark:bg-zinc-800 h-screen w-full flex flex-col justify-between items-center gap-2">
-            <div className="no-scrollbar overflow-scroll w-full flex flex-col items-center gap-2">
+          <div className="bg-zinc-200 bg-opacity-30 backdrop-blur-xl  py-8 px-4 rounded-2xl shadow-xl xl:mx-0 dark:bg-zinc-800 h-screen w-full flex flex-col justify-between items-center gap-2">
+            <div className="no-scrollbar  overflow-scroll w-full flex flex-col items-center gap-2">
               <HomeTab />
               {user.lists.map((list) => (
                 <ListTab list={list} key={list.id} />

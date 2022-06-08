@@ -10,7 +10,7 @@ import {
   RedColor,
   CyanColor,
 } from "./AccentColor";
-import { SubmitButton } from "./Buttons";
+import { DeleteButton, SubmitButton } from "./Buttons";
 import { DarkThemeTab, LightThemeTab, SysThemeTab } from "./Tabs";
 
 export const ThemeTab = () => {
@@ -64,6 +64,9 @@ export const UpdateTab = () => {
     const update = users.updateUser(data);
     try {
       await update;
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000);
     } catch (e: any) {}
   };
   return (
@@ -82,6 +85,69 @@ export const UpdateTab = () => {
         <EmailInput form={data} setForm={setData} />
         <PasswordInput form={data} setForm={setData} />
         <SubmitButton text="Update" />
+      </form>
+    </div>
+  );
+};
+
+export const DeleteTab = () => {
+  const handleDelete = async (e: any) => {
+    e.preventDefault();
+    const deleteUser = users.deleteUser();
+    try {
+      await deleteUser;
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000);
+    } catch (e: any) {}
+  };
+  return (
+    <div className="flex w-full flex-col gap-2 justify-center items-start">
+      <h2 className="text-lg md:text-xl font-semibold  px-4  leading-6 text-red-500 dark:text-red-600">
+        Danger Zone
+      </h2>
+      <p className="text-sm md:text-base px-4 leading-5 text-zinc-500 dark:text-zinc-300">
+        Delete your account.
+      </p>
+      <p className="text-xs px-4 mb-6 leading-5 text-zinc-900 dark:text-zinx-50 font-semibold dark:text-zinc-300">
+        Make sure that you want to delete your account. This action is
+        irreversible.
+      </p>
+      <form
+        onSubmit={handleDelete}
+        className="flex  justify-center w-full px-8 gap-2 items-center"
+      >
+        <DeleteButton text="Delete Account" />
+      </form>
+    </div>
+  );
+};
+
+export const SignOut = () => {
+  const handleSignout = async (e: any) => {
+    e.preventDefault();
+    const signout = users.signout();
+    try {
+      await signout;
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000);
+    } catch (e: any) {}
+  };
+  return (
+    <div className="flex w-full flex-col gap-2 justify-center items-start">
+      <h2 className="text-lg md:text-xl font-semibold  px-4  leading-6 text-zinc-700 dark:text-zinc-300">
+        Sign Out
+      </h2>
+      <p className="text-sm md:text-base px-4 leading-5 text-zinc-500 dark:text-zinc-300">
+        Sign out of your account.
+      </p>
+
+      <form
+        onSubmit={handleSignout}
+        className="flex  justify-center w-full px-8 gap-2 items-center"
+      >
+        <SubmitButton text="Sign Out" />
       </form>
     </div>
   );

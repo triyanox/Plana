@@ -51,3 +51,14 @@ export const SubmitButton = (props: SubmitButton) => {
     </button>
   );
 };
+
+export const DeleteButton = (props: SubmitButton) => {
+  return (
+    <button
+      type="submit"
+      className="w-[360px] md:w-[400px] mt-4 dark:bg-red-600 bg-red-500 dark:text-black text-white font-bold py-3 px-4 rounded-2xl hover:ring-4 dark:hover:ring-red-400 hover:ring-red-300 transition-all duration-300 active:scale-95"
+    >
+      {props.text}
+    </button>
+  );
+};

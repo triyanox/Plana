@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import * as Todo from "../../lib/todo";
 import { useSelectedList } from "../hooks/SelectedList";
 import { todo } from "../hooks/List";
+import { motion } from "framer-motion";
 
 const TodoInput = (props: {
   todos: todo[];
@@ -10,12 +11,19 @@ const TodoInput = (props: {
   const { seletedList } = useSelectedList();
   const [todo, setTodo] = useState({
     text: "",
-    listId: seletedList.id || 0,
+    listId: 0,
   });
 
-  const handleKeyDown = async (e: React.KeyboardEvent<HTMLInputElement>) => {
+  useEffect(() => {
+    setTodo({
+      text: "",
+      listId: seletedList.id,
+    });
+  }, [seletedList]);
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
-      await submitTodo();
+      submitTodo();
       setTodo({
         text: "",
         listId: seletedList.id,
@@ -31,7 +39,11 @@ const TodoInput = (props: {
   };
 
   return (
-    <input
+    <motion.input
+      initial={{ opacity: 0, y: -20, scale: 0.8 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      exit={{ opacity: 0, y: -20, scale: 0.8 }}
+      transition={{ duration: 0.2 }}
       onChange={(e) => setTodo({ ...todo, text: e.target.value })}
       value={todo.text}
       onKeyDown={handleKeyDown}

@@ -3,10 +3,13 @@ import { Fragment, useState } from "react";
 import { useCreateList } from "../hooks/CreateList";
 import * as list from "../../lib/list";
 import { useUser } from "../hooks/User";
+import { useSelectedList } from "../hooks/SelectedList";
+import { useMenu } from "../hooks/Menu";
 
 function SettingsModal() {
   const { isListOpen, setIsListOpen } = useCreateList();
   const [listName, setListName] = useState("");
+  const { setSeletedList } = useSelectedList();
   const { user, setUser } = useUser();
   const closeModal = () => {
     setIsListOpen(false);
@@ -35,6 +38,13 @@ function SettingsModal() {
             updatedAt: res.data.updatedAt,
           },
         ],
+      });
+      setSeletedList({
+        id: res.data.id,
+        name: res.data.name,
+        userId: res.data.userId,
+        createdAt: res.data.createdAt,
+        updatedAt: res.data.updatedAt,
       });
       closeModal();
     } catch (e) {}
