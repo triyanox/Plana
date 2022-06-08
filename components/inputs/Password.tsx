@@ -43,7 +43,7 @@ const PasswordInput = (props: Props) => {
   };
 
   return (
-    <div className="relative  flex justify-center items-center">
+    <div className="relative pb-2 flex justify-center items-center">
       <input
         className={`w-[360px] md:w-[400px] rounded-2xl     
       ${
