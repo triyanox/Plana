@@ -9,3 +9,11 @@ export async function createUser(user: {
 }) {
   await http.post(userBaseUrl, user);
 }
+
+export async function updateUser(user: {
+  name: string;
+  email: string;
+  password: string;
+}) {
+  await http.put(userBaseUrl, user);
+}
