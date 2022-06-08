@@ -17,3 +17,11 @@ export async function updateUser(user: {
 }) {
   await http.put(userBaseUrl, user);
 }
+
+export async function deleteUser() {
+  await http.delete(userBaseUrl);
+}
+
+export async function signout() {
+  await http.post("/api/user/signout");
+}
