@@ -18,3 +18,15 @@ export async function update(todo: { id: number; status: Status }) {
   const res = await http.put(`/api/todos/todo/${todo.id}`, todo);
   return res;
 }
+
+// get all todos
+export async function getAll() {
+  const res = await http.get("/api/todos");
+  return res;
+}
+
+// delete a todo
+export async function deleteTodo(id: number) {
+  const res = await http.delete(`/api/todos/todo/${id}`);
+  return res;
+}

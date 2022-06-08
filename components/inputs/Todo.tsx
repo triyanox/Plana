@@ -1,7 +1,6 @@
 import { useState } from "react";
 import * as Todo from "../../lib/todo";
 import { useSelectedList } from "../hooks/SelectedList";
-import { useUser } from "../hooks/User";
 import { todo } from "../hooks/List";
 
 const TodoInput = (props: {
@@ -11,12 +10,12 @@ const TodoInput = (props: {
   const { seletedList } = useSelectedList();
   const [todo, setTodo] = useState({
     text: "",
-    listId: 0,
+    listId: seletedList.id || 0,
   });
 
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+  const handleKeyDown = async (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
-      submitTodo();
+      await submitTodo();
       setTodo({
         text: "",
         listId: seletedList.id,

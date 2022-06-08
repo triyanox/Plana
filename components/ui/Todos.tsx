@@ -19,13 +19,19 @@ const Todos = () => {
   const [todos, setTodos] = useState<todo[]>([]);
   const { seletedList } = useSelectedList();
   useEffect(() => {
-    Todo.getTodos(seletedList.id)
-      .then((res) => {
-        setTodos(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    if (seletedList.id === 0) {
+      Todo.getAll()
+        .then((res) => {
+          setTodos(res.data);
+        })
+        .catch(() => {});
+    } else {
+      Todo.getTodos(seletedList.id)
+        .then((res) => {
+          setTodos(res.data);
+        })
+        .catch(() => {});
+    }
   }, [seletedList]);
 
   const { user } = useUser();
@@ -36,20 +42,28 @@ const Todos = () => {
    mx-8 lg:mx-0 xl:mx-8 transition-all duration-500"
     >
       <h1 className="text-2xl  w-full lg:w-2/3 text-left font-bold text-zinc-800 dark:text-zinc-200">
-        Welcome back {name} !
+        {seletedList.id === 0
+          ? `Welcome Back ${name} !`
+          : `${seletedList.name} Todos`}
       </h1>
       <p className="text-lg mt-2 mb-8 font-medium w-full lg:w-2/3 text-left text-zinc-700 dark:text-zinc-300">
-        Your recent tasks are here !
+        {seletedList.id === 0
+          ? "Your recent tasks are here !"
+          : `Here are your todos for ${seletedList.name}`}
       </p>
-
-      <TodoInput todos={todos} setTodos={setTodos} />
+      {seletedList.id !== 0 && <TodoInput todos={todos} setTodos={setTodos} />}
       <AnimatePresence exitBeforeEnter>
         <motion.div
           variants={stagger}
           className="w-full -translate-y-4 mt-0 lg:w-2/3 overflow-auto no-scrollbar block justify-center items-center pt-4 pb-4 gap-2"
         >
           {todos.map((todo) => (
-            <TodoCard key={todo.id} todo={todo} />
+            <TodoCard
+              key={todo.id}
+              todo={todo}
+              todos={todos}
+              setTodos={setTodos}
+            />
           ))}
         </motion.div>
       </AnimatePresence>
