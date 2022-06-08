@@ -26,15 +26,13 @@ export default async function handle(
 
     const isValid = schema.validate({ name, email, password });
     if (isValid.error) {
-      res.status(400).json({ error: isValid.error.message });
-      return;
+      return res.status(400).json({ error: isValid.error.message });
     }
     const isExist = await prisma.user.findUnique({
       where: { email },
     });
     if (isExist) {
-      res.status(400).json({ error: "user already exists" });
-      return;
+      return res.status(400).json({ error: "user already exists" });
     }
     const salt = await bcrypt.genSalt(10);
     req.body.password = await bcrypt.hash(password, salt);
@@ -60,8 +58,7 @@ export default async function handle(
       where: { email },
     });
     if (!isExist) {
-      res.status(400).json({ error: "user not found" });
-      return;
+      return res.status(400).json({ error: "user not found" });
     }
     const salt = await bcrypt.genSalt(10);
     req.body.password = await bcrypt.hash(password, salt);
@@ -73,29 +70,7 @@ export default async function handle(
     });
     res.status(200).json("user updated successfully");
   } else if (req.method === "DELETE") {
-    const token = req.cookies.token;
-    if (!token)
-      return res.status(401).send("Access denied. No token provided.");
-    const user: any = jwt.verify(token, env.JWT_SECRET as string);
-    if (!user) return res.status(401).send("Access denied.");
-    await prisma.user.delete({
-      where: { id: user.id },
-    });
-    res.status(200).json("user deleted successfully");
-  } else if (req.method === "GET") {
-    const token = req.cookies.token;
-    if (!token)
-      return res.status(401).send("Access denied. No token provided.");
-    const user: any = jwt.verify(token, env.JWT_SECRET as string);
-    if (!user) return res.status(401).send("Access denied.");
-    const userData = await prisma.user.findUnique({
-      where: { id: user.id },
-    });
-
-    res.status(200).json({
-      id: userData?.id,
-      name: userData?.name,
-      email: userData?.email,
-    });
+  } else {
+    res.status(405).send("Method not allowed");
   }
 }
