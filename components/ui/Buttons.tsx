@@ -45,7 +45,7 @@ export const SubmitButton = (props: SubmitButton) => {
   return (
     <button
       type="submit"
-      className="w-full mt-4 dark:bg-zinc-100 bg-zinc-900 dark:text-black text-white font-bold py-3 px-4 rounded-2xl hover:ring-4 dark:hover:ring-zinc-700 hover:ring-zinc-300 transition-all duration-300 active:scale-95"
+      className="w-[360px] md:w-[400px] mt-4 dark:bg-zinc-100 bg-zinc-900 dark:text-black text-white font-bold py-3 px-4 rounded-2xl hover:ring-4 dark:hover:ring-zinc-700 hover:ring-zinc-300 transition-all duration-300 active:scale-95"
     >
       {props.text}
     </button>
