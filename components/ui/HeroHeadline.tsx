@@ -43,7 +43,7 @@ const Headline = () => {
       }}
       className="w-full justify-center items-start flex gap-2 flex-col"
     >
-      <h1 className="text-5xl xl:text-7xl mb-8 font-semibold text-black dark:text-white">
+      <h1 className="text-5xl xl:text-7xl mb-8 font-semibold  bg-gradient-to-r from-[#0F00FF] to-[#00DAFF] text-transparent bg-clip-text animate-gradient-x py-4">
         Regain control
       </h1>
       <h2 className="text-3xl font-bold text-zinc-900 dark:text-zinc-100">

@@ -14,7 +14,7 @@ const Hero = () => {
     }
   }, [controls, inView]);
   return (
-    <section className="w-full pt-24 px-12 flex flex-col-reverse items-center justify-center md:flex-row  gap-8">
+    <section className="w-full pt-16 px-12 flex flex-col-reverse items-center justify-center md:flex-row  gap-8">
       <Headline />
       <motion.div
         ref={ref}

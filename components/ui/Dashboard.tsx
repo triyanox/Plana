@@ -10,6 +10,7 @@ import { ListContext, todo } from "../hooks/List";
 import CreateListModal from "./CreateListModal";
 import { Status } from "@prisma/client";
 import { selListContext } from "../hooks/SelectedList";
+import Head from "next/head";
 
 type List = todo[];
 
@@ -36,37 +37,49 @@ const Dashboard = () => {
   };
 
   return (
-    <section
-      tabIndex={0}
-      onKeyDown={handleKeyDown}
-      className="w-full flex justify-center items-center gap-8 "
-    >
-      <MenuContext.Provider value={{ isActive, setIsActive }}>
-        <ModalContext.Provider value={{ isOpen, setIsOpen }}>
-          <CreateList.Provider value={{ isListOpen, setIsListOpen }}>
-            <ListContext.Provider
-              value={{
-                list,
-                setList,
-              }}
-            >
-              <selListContext.Provider
+    <>
+      <Head>
+        <meta charSet="UTF-8" />
+        <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="theme-color" content="#000000" />
+        <meta name="robots" content="follow, index" />
+        <title>{seletedList.name || "Dashboard"} - Minimal To-Do app</title>
+        <meta name="description" content={"Minimal To-Do app"} />
+        <meta name="author" content="Mohamed Achaq" />
+      </Head>
+      <section
+        tabIndex={0}
+        onKeyDown={handleKeyDown}
+        className="w-full flex justify-center items-center gap-8 "
+      >
+        <MenuContext.Provider value={{ isActive, setIsActive }}>
+          <ModalContext.Provider value={{ isOpen, setIsOpen }}>
+            <CreateList.Provider value={{ isListOpen, setIsListOpen }}>
+              <ListContext.Provider
                 value={{
-                  seletedList,
-                  setSeletedList,
+                  list,
+                  setList,
                 }}
               >
-                <Sidebar />
-                <Todos />
-                <SettingsModal isOpen={isOpen} setIsOpen={setIsOpen} />
-                <OpenSidebar />
-                <CreateListModal />
-              </selListContext.Provider>
-            </ListContext.Provider>
-          </CreateList.Provider>
-        </ModalContext.Provider>
-      </MenuContext.Provider>
-    </section>
+                <selListContext.Provider
+                  value={{
+                    seletedList,
+                    setSeletedList,
+                  }}
+                >
+                  <Sidebar />
+                  <Todos />
+                  <SettingsModal isOpen={isOpen} setIsOpen={setIsOpen} />
+                  <OpenSidebar />
+                  <CreateListModal />
+                </selListContext.Provider>
+              </ListContext.Provider>
+            </CreateList.Provider>
+          </ModalContext.Provider>
+        </MenuContext.Provider>
+      </section>
+    </>
   );
 };
 export default Dashboard;

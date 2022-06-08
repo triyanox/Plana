@@ -4,7 +4,11 @@ import Main from "./Main";
 
 const HomePage = () => {
   return (
-    <Main>
+    <Main
+      pageTitle="Plana | Regain control"
+      siteName="Plana"
+      description="Minimal To-Do app"
+    >
       <Hero />
       <Features />
     </Main>

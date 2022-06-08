@@ -20,7 +20,6 @@ const Fcard = () => {
       variants={{
         visible: {
           translateY: 0,
-          scale: 1,
           opacity: 1,
           transformOrigin: "bottom",
           transition: {
@@ -32,7 +31,6 @@ const Fcard = () => {
         },
         hidden: {
           translateY: 100,
-          scale: 0.6,
           opacity: 0.2,
           transformOrigin: "bottom",
           transition: {

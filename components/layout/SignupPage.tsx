@@ -3,7 +3,11 @@ import Main from "./Main";
 
 const SignupPage = () => {
   return (
-    <Main>
+    <Main
+      pageTitle="Plana | Signup"
+      siteName="Plana"
+      description="Minimal To-Do app"
+    >
       <Signup />
     </Main>
   );
