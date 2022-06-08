@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "vercel-build": "prisma generate && prisma migrate deploy && next build",
-    "lint": "next lint"
+    "lint": "next lint",
+    "seed": "tsc ./prisma/seed.ts && node ./prisma/seed.js"
   },
   "dependencies": {
     "@headlessui/react": "^1.6.4",
