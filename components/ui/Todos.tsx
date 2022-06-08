@@ -57,7 +57,7 @@ const Todos = () => {
     >
       <div className="flex w-full lg:w-2/3 justify-between items-center">
         <div className="flex w-full  justify-center  flex-col items-start">
-          <h1 className="text-2xl  font-bold text-zinc-800 dark:text-zinc-200">
+          <h1 className="text-3xl  font-bold bg-gradient-to-r from-[#0F00FF] to-[#00DAFF] text-transparent bg-clip-text animate-gradient-x py-2">
             {seletedList.id === 0
               ? `Welcome Back ${name} !`
               : `${seletedList.name} Todos`}
