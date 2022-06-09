@@ -4,7 +4,7 @@ import ThemeToggle from "./ThemeToggle";
 
 const Navbar = () => {
   return (
-    <nav className="w-full flex px-4 sm:px-8 md:px-12 py-4 justify-between items-center">
+    <nav className="w-full flex px-6 sm:px-8 md:px-12 py-4 justify-between items-center">
       <Link href="/" passHref>
         <a className="text-2xl font-bold text-black dark:text-white">Plana</a>
       </Link>
