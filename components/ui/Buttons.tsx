@@ -39,13 +39,16 @@ export const IconButton = (props: IconButton) => {
 
 type SubmitButton = {
   text: string;
+  sm?: boolean;
 };
 
 export const SubmitButton = (props: SubmitButton) => {
   return (
     <button
       type="submit"
-      className="w-[360px] md:w-[400px] mt-4 dark:bg-zinc-100 bg-zinc-900 dark:text-black text-white font-bold py-3 px-4 rounded-2xl hover:ring-4 dark:hover:ring-zinc-700 hover:ring-zinc-300 transition-all duration-300 active:scale-95"
+      className={`${
+        props.sm ? "w-full sm:w-[360px]" : "w-[360px]"
+      } md:w-[400px] mt-4 dark:bg-zinc-100 bg-zinc-900 dark:text-black text-white font-bold py-3 px-4 rounded-2xl hover:ring-4 dark:hover:ring-zinc-700 hover:ring-zinc-300 transition-all duration-300 active:scale-95`}
     >
       {props.text}
     </button>
@@ -56,7 +59,9 @@ export const DeleteButton = (props: SubmitButton) => {
   return (
     <button
       type="submit"
-      className="w-[360px] md:w-[400px] mt-4 dark:bg-red-600 bg-red-500 dark:text-black text-white font-bold py-3 px-4 rounded-2xl hover:ring-4 dark:hover:ring-red-400 hover:ring-red-300 transition-all duration-300 active:scale-95"
+      className={`${
+        props.sm ? "w-full sm:w-[360px]" : "w-[360px]"
+      } md:w-[400px] mt-4 dark:bg-red-600 bg-red-500 dark:text-black text-white font-bold py-3 px-4 rounded-2xl hover:ring-4 dark:hover:ring-red-400 hover:ring-red-300 transition-all duration-300 active:scale-95`}
     >
       {props.text}
     </button>

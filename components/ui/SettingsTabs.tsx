@@ -24,10 +24,9 @@ export const ThemeTab = () => {
       <p className="text-sm md:text-base px-4 mb-6 leading-5 text-zinc-500 dark:text-zinc-300">
         Change the theme of the app.
       </p>
-      <div className="flex  justify-center w-full px-32 gap-2 items-center">
+      <div className="flex  justify-center w-full px-8 md:px-32 gap-2 items-center">
         <DarkThemeTab onclick={() => setTheme("dark")} />
         <LightThemeTab onclick={() => setTheme("light")} />
-
         <SysThemeTab onclick={() => setTheme("system")} />
       </div>
     </div>
@@ -79,12 +78,12 @@ export const UpdateTab = () => {
       </p>
       <form
         onSubmit={handelSubmit}
-        className="mt-2 w-full flex flex-col justify-center items-center gap-4 px-8 py-4"
+        className="flex mt-4 flex-col justify-center w-full px-8 gap-2 items-center"
       >
-        <NameInput form={data} setForm={setData} />
-        <EmailInput form={data} setForm={setData} />
-        <PasswordInput form={data} setForm={setData} />
-        <SubmitButton text="Update" />
+        <NameInput sm={true} form={data} setForm={setData} />
+        <EmailInput sm={true} form={data} setForm={setData} />
+        <PasswordInput sm={true} form={data} setForm={setData} />
+        <SubmitButton sm={true} text="Update" />
       </form>
     </div>
   );
@@ -117,7 +116,7 @@ export const DeleteTab = () => {
         onSubmit={handleDelete}
         className="flex  justify-center w-full px-8 gap-2 items-center"
       >
-        <DeleteButton text="Delete Account" />
+        <DeleteButton sm={true} text="Delete Account" />
       </form>
     </div>
   );
@@ -147,7 +146,7 @@ export const SignOut = () => {
         onSubmit={handleSignout}
         className="flex  justify-center w-full px-8 gap-2 items-center"
       >
-        <SubmitButton text="Sign Out" />
+        <SubmitButton sm={true} text="Sign Out" />
       </form>
     </div>
   );

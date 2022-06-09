@@ -7,6 +7,7 @@ type Props = {
     password: string;
     name?: string;
   };
+  sm?: boolean;
 };
 
 const NameInput = (props: Props) => {
@@ -42,7 +43,9 @@ const NameInput = (props: Props) => {
 
   return (
     <input
-      className={`w-[360px] md:w-[400px] rounded-2xl    
+      className={`${
+        props.sm ? "w-full sm:w-[360px]" : "w-[360px]"
+      }  md:w-[400px] rounded-2xl    
       ${
         helper.color === "error"
           ? "text-red-600 dark:text-red-400 bg-red-200 dark:bg-red-600 dark:bg-opacity-20"

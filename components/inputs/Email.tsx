@@ -6,6 +6,7 @@ type Props = {
     password?: string;
     name?: string;
   };
+  sm?: boolean;
 };
 
 const EmailInput = (props: Props) => {
@@ -38,9 +39,10 @@ const EmailInput = (props: Props) => {
   };
 
   return (
-    <div className="flex flex-col justify-center items-start">
-      <input
-        className={`w-[360px] md:w-[400px] rounded-2xl  
+    <input
+      className={`${
+        props.sm ? "w-full sm:w-[360px]" : "w-[360px]"
+      } md:w-[400px] rounded-2xl  
       ${
         helper.color === "error"
           ? "text-red-600 dark:text-red-400 bg-red-200 dark:bg-red-600 dark:bg-opacity-20"
@@ -50,13 +52,12 @@ const EmailInput = (props: Props) => {
       }
       
       px-6 py-3 text-lg font-medium  outline-none focus:placeholder:invisible dark:focus:placeholder:text-zinc-900 transition-all duration-200 `}
-        value={email}
-        onChange={handleChange}
-        color={helper.color}
-        type="email"
-        placeholder="Email"
-      />
-    </div>
+      value={email}
+      onChange={handleChange}
+      color={helper.color}
+      type="email"
+      placeholder="Email"
+    />
   );
 };
 

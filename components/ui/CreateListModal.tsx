@@ -75,7 +75,7 @@ function SettingsModal() {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <Dialog.Panel className="w-full h-3/6 max-w-lg transform overflow-auto mt-48 rounded-2xl bg-white dark:bg-zinc-800 py-6 px-2 text-left align-middle shadow-xl transition-all">
+              <Dialog.Panel className="w-full h-2/6 md:h-3/6 max-w-lg transform overflow-auto mt-48 rounded-2xl bg-white dark:bg-zinc-800 py-6 px-2 text-left align-middle shadow-xl transition-all">
                 <Dialog.Title
                   as="h3"
                   className="text-xl md:text-2xl flex justify-start items-center font-bold  px-4 mb-2 leading-6 text-zinc-900 dark:text-zinc-100"

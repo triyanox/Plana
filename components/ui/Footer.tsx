@@ -4,7 +4,7 @@ import { IconButton } from "./Buttons";
 
 const Footer = () => {
   return (
-    <footer className="w-full mt-48 pb-8 flex px-12 py-4 justify-between items-center">
+    <footer className="w-full mt-48 pb-8 flex flex-col md:flex-row px-12 py-4 justify-between items-center">
       <div className="flex w-full justify-center items-start flex-col gap-2">
         <h1 className="text-2xl font-bold text-black dark:text-white">Plana</h1>
         <h2 className="text-xl text-black dark:text-white">
@@ -21,7 +21,7 @@ const Footer = () => {
         </p>
       </div>
       <Link href="https://twitter.com/ac__haq" passHref>
-        <a>
+        <a className="flex flex-row w-full justify-start md:justify-end items-start mt-8">
           <IconButton icon={<SiTwitter />} />
         </a>
       </Link>

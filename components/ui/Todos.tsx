@@ -111,7 +111,7 @@ const Todos = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.8 }}
-            className="flex p-8 justify-center items-center"
+            className="flex pt-16 md:pt-8 justify-center items-center"
           >
             <Image
               src={notodos}
