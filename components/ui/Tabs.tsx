@@ -69,6 +69,7 @@ export const RecentTab = () => {
 export const CreateTab = (props: { onclick: () => void }) => {
   return (
     <Tab
+      date="Cmd + Alt"
       onClick={props.onclick}
       icon={<CgMathPlus className="text-3xl" />}
       text="New List"
@@ -79,6 +80,7 @@ export const CreateTab = (props: { onclick: () => void }) => {
 export const SettingTab = (props: { onclick: () => void }) => {
   return (
     <Tab
+      date="Cmd + k"
       onClick={props.onclick}
       icon={<RiSettings4Fill className="text-3xl" />}
       text="Settings"
