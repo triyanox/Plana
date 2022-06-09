@@ -41,7 +41,7 @@ const TodoCard = (props: {
     >
       <div
         onClick={handelUpdate}
-        className="w-8 h-6  active:ring-2 ring-offset-zinc-100 dark:ring-offset-zinc-800 ring-offset-2 transition-all duration-300 ring-zinc-300 dark:ring-zinc-600  cursor-pointer flex justify-center items-center bg-zinc-300 dark:bg-zinc-600 rounded-lg"
+        className="w-8 h-6  hover:ring-2 ring-offset-zinc-100 dark:ring-offset-zinc-800 ring-offset-2 transition-all duration-300 ring-zinc-300 dark:ring-zinc-600  cursor-pointer flex justify-center items-center bg-zinc-300 dark:bg-zinc-600 rounded-lg"
       >
         <AnimatePresence exitBeforeEnter>
           {todo.status === Status.DONE && (
