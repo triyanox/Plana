@@ -17,7 +17,7 @@ const Login = () => {
       await login;
       toast.success("Logged in successfully, redirecting...");
       setTimeout(() => {
-        window.location.href = "/";
+        window.location.href = "/dashboard";
       }, 3000);
     } catch (e: any) {
       toast.error(e.response.data.error);
