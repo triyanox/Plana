@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
-import { NextApiRequest, NextApiResponse } from "next";
-import { verify } from "jsonwebtoken";
+import { NextApiRequest } from "next";
+import * as jose from "jose";
 import { env } from "process";
 
 export default function middleware(req: NextApiRequest) {
@@ -11,7 +11,7 @@ export default function middleware(req: NextApiRequest) {
   if (url && url.includes("/login")) {
     if (token) {
       try {
-        verify(token, jwt_Secret as string);
+        jose.jwtVerify(token, new TextEncoder().encode(jwt_Secret));
         return NextResponse.redirect("/dashboard");
       } catch (err) {
         return NextResponse.next();
@@ -21,7 +21,7 @@ export default function middleware(req: NextApiRequest) {
   if (url && url.includes("/signup")) {
     if (token) {
       try {
-        verify(token, jwt_Secret as string);
+        jose.jwtVerify(token, new TextEncoder().encode(jwt_Secret));
         return NextResponse.redirect("/dashboard");
       } catch (err) {
         return NextResponse.next();
@@ -31,7 +31,7 @@ export default function middleware(req: NextApiRequest) {
   if (url && url.includes("/")) {
     if (token) {
       try {
-        verify(token, jwt_Secret as string);
+        jose.jwtVerify(token, new TextEncoder().encode(jwt_Secret));
         return NextResponse.redirect("/dashboard");
       } catch (err) {
         return NextResponse.next();
@@ -44,7 +44,7 @@ export default function middleware(req: NextApiRequest) {
       return NextResponse.redirect("/login");
     }
     try {
-      verify(token, jwt_Secret as string);
+      jose.jwtVerify(token, new TextEncoder().encode(jwt_Secret));
       return NextResponse.next();
     } catch (err) {
       return NextResponse.redirect("/login");
