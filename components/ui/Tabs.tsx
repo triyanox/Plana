@@ -72,7 +72,6 @@ export const CreateTab = (props: { onclick: () => void }) => {
   return (
     <Tab
       {...(!isMobile && { date: "Cmd + Alt" })}
-      date="Cmd + Alt"
       onClick={props.onclick}
       icon={<CgMathPlus className="text-3xl" />}
       text="New List"
