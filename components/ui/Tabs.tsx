@@ -67,8 +67,11 @@ export const RecentTab = () => {
 };
 
 export const CreateTab = (props: { onclick: () => void }) => {
+  const isMobile = useMediaQuery({ maxWidth: 1024 });
+
   return (
     <Tab
+      {...(!isMobile && { date: "Cmd + Alt" })}
       date="Cmd + Alt"
       onClick={props.onclick}
       icon={<CgMathPlus className="text-3xl" />}
@@ -78,9 +81,10 @@ export const CreateTab = (props: { onclick: () => void }) => {
 };
 
 export const SettingTab = (props: { onclick: () => void }) => {
+  const isMobile = useMediaQuery({ maxWidth: 1024 });
   return (
     <Tab
-      date="Cmd + k"
+      {...(!isMobile && { date: "Cmd + Alt" })}
       onClick={props.onclick}
       icon={<RiSettings4Fill className="text-3xl" />}
       text="Settings"
