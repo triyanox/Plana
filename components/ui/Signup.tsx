@@ -5,8 +5,11 @@ import PasswordInput from "../inputs/Password";
 import { SubmitButton } from "./Buttons";
 import * as users from "../../lib/users";
 import toast, { Toaster } from "react-hot-toast";
+import { useRouter } from "next/router";
 
 const Signup = () => {
+  const router = useRouter();
+
   const [data, setData] = useState({
     name: "",
     email: "",
@@ -19,7 +22,7 @@ const Signup = () => {
       await signup;
       toast.success("User created successfully, redirecting...");
       setTimeout(() => {
-        window.location.href = "/login";
+        router.push("/login");
       }, 3000);
     } catch (e: any) {
       toast.error(e.response.data.error);

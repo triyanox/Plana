@@ -51,8 +51,10 @@ export const AccentTab = () => {
 };
 
 import * as users from "../../lib/users";
+import { useRouter } from "next/router";
 
 export const UpdateTab = () => {
+  const router = useRouter();
   const [data, setData] = useState({
     name: "",
     email: "",
@@ -64,7 +66,7 @@ export const UpdateTab = () => {
     try {
       await update;
       setTimeout(() => {
-        window.location.reload();
+        router.reload();
       }, 2000);
     } catch (e: any) {}
   };
@@ -90,13 +92,14 @@ export const UpdateTab = () => {
 };
 
 export const DeleteTab = () => {
+  const router = useRouter();
   const handleDelete = async (e: any) => {
     e.preventDefault();
     const deleteUser = users.deleteUser();
     try {
       await deleteUser;
       setTimeout(() => {
-        window.location.reload();
+        router.reload();
       }, 2000);
     } catch (e: any) {}
   };
@@ -123,13 +126,14 @@ export const DeleteTab = () => {
 };
 
 export const SignOut = () => {
+  const router = useRouter();
   const handleSignout = async (e: any) => {
     e.preventDefault();
     const signout = users.signout();
     try {
       await signout;
       setTimeout(() => {
-        window.location.reload();
+        router.reload();
       }, 2000);
     } catch (e: any) {}
   };
