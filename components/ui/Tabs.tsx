@@ -83,7 +83,7 @@ export const SettingTab = (props: { onclick: () => void }) => {
   const isMobile = useMediaQuery({ maxWidth: 1024 });
   return (
     <Tab
-      {...(!isMobile && { date: "Cmd + Alt" })}
+      {...(!isMobile && { date: "Cmd + K" })}
       onClick={props.onclick}
       icon={<RiSettings4Fill className="text-3xl" />}
       text="Settings"
