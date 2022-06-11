@@ -28,7 +28,7 @@ const Sidebar = () => {
             opacity: 0,
           }}
           transition={{
-            duration: 0.4,
+            duration: 0.5,
             dump: 0.8,
             ease: "easeInOut",
             stiffness: 100,
