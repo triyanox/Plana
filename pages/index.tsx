@@ -29,10 +29,13 @@ type User = {
 const fetcher = (url: string) => http.get(url).then((res) => res.data);
 
 const Home: NextPage<User> = ({ userData }) => {
-  const { data } = useSWR("/api/lists", fetcher);
-  userData.lists = data || [];
-
   const [user, setUser] = useState<UserState>(userData);
+
+  if(user.loggedIn){
+    const { data } = useSWR("/api/lists", fetcher);
+    userData.lists = data || [];
+  }
+
 
   return (
     <UserContext.Provider value={{ user, setUser }}>
