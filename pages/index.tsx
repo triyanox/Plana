@@ -31,10 +31,9 @@ const fetcher = (url: string) => http.get(url).then((res) => res.data);
 const Home: NextPage<User> = ({ userData }) => {
   const [user, setUser] = useState<UserState>(userData);
 
-  if(user.loggedIn){
-    const { data } = useSWR("/api/lists", fetcher);
-    userData.lists = data || [];
-  }
+  const { data } = useSWR("/api/lists", fetcher);
+  userData.lists = data || [];
+  
 
 
   return (
