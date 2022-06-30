@@ -17,7 +17,7 @@ const Tab = (props: TabProps) => {
         exit={{ opacity: 0, y: -20, scale: 0.8 }}
         transition={{ duration: 0.5, delay: 0.2 }}
         onClick={props.onClick}
-        className="flex  outline-none  transition-all duration-300 lg:hover:bg-zinc-50  lg:hover:dark:bg-zinc-800 text-black dark:text-white justify-between px-4 items-center w-full py-2 rounded-xl "
+        className="flex  outline-none  transition-all duration-300 lg:hover:bg-zinc-100  lg:hover:dark:bg-zinc-800 text-black dark:text-white justify-between px-4 items-center w-full py-2 rounded-xl "
       >
         <div className="flex gap-4 justify-start items-center">
           {props.icon}
