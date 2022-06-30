@@ -33,8 +33,6 @@ const Home: NextPage<User> = ({ userData }) => {
 
   const { data } = useSWR("/api/lists", fetcher);
   userData.lists = data || [];
-  
-
 
   return (
     <UserContext.Provider value={{ user, setUser }}>
@@ -50,17 +48,33 @@ Home.getInitialProps = async ({ req }) => {
   const token = cookies
     ? cookies.split(";").find((c) => c.trim().startsWith("token="))
     : null;
+
   if (token) {
-    const user: any = jwt.verify(token.split("=")[1], env.JWT_SECRET as string);
-    return {
-      userData: {
-        id: user.id,
-        name: user.name,
-        email: user.email,
-        lists: [],
-        loggedIn: true,
-      },
-    };
+    try {
+      const user: any = jwt.verify(
+        token.split("=")[1],
+        env.JWT_SECRET as string
+      );
+      return {
+        userData: {
+          id: user.id,
+          name: user.name,
+          email: user.email,
+          lists: [],
+          loggedIn: true,
+        },
+      };
+    } catch {
+      return {
+        userData: {
+          id: 0,
+          name: "",
+          email: "",
+          lists: [],
+          loggedIn: false,
+        },
+      };
+    }
   }
   return {
     userData: {

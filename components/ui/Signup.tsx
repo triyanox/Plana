@@ -38,7 +38,7 @@ const Signup = () => {
       </p>
       <form
         onSubmit={handelSubmit}
-        className="mt-2 flex flex-col justify-center items-center gap-8 px-6 py-4"
+        className="mt-2 flex flex-col justify-center items-center gap-4 px-6 py-4"
       >
         <NameInput form={data} setForm={setData} />
         <EmailInput form={data} setForm={setData} />

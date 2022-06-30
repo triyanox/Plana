@@ -10,8 +10,10 @@ import { AnimatePresence, motion } from "framer-motion";
 import { MdDelete } from "react-icons/md";
 import Image from "next/image";
 import notodos from "../../assets/notodos.svg";
+import { useMenu } from "../hooks/Menu";
 
 const Todos = () => {
+  const { isActive } = useMenu();
   const [todos, setTodos] = useState<todo[]>([]);
   const { seletedList, setSeletedList } = useSelectedList();
   const { user, setUser } = useUser();
@@ -51,7 +53,13 @@ const Todos = () => {
 
   const name = user.name;
   return (
-    <section
+    <motion.section
+      key={JSON.stringify(isActive)}
+      initial={{ width: "auto" }}
+      animate={{ width: "100%" }}
+      transition={{
+        duration: 0.3,
+      }}
       className="h-screen w-full flex flex-col justify-start items-center pt-16
    mx-8 lg:mx-0 xl:mx-8 transition-all duration-500"
     >
@@ -122,7 +130,7 @@ const Todos = () => {
           </motion.div>
         </AnimatePresence>
       )}
-    </section>
+    </motion.section>
   );
 };
 export default Todos;

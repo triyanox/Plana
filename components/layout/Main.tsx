@@ -36,10 +36,7 @@ export default function Main(props: MainProps) {
           content={props.description}
           key="ogdesc"
         />
-        <meta
-          name="keywords"
-          content="Mohamed Achaq, Plana, HTML, CSS, JavaScript, React, Typescript, NodeJs, Python"
-        />
+
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://plana.achaq.codes/" />
         <meta property="og:title" content={props.pageTitle} />
