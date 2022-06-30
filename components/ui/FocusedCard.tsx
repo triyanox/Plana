@@ -51,7 +51,7 @@ const Fcard = () => {
           Get started today
         </h2>
       </div>
-      <div className="w-full flex lg:justify-end items-center gap-2 ">
+      <div className="w-full flex md:justify-end items-center gap-2 ">
         <Link href="/signup" passHref>
           <a>
             <ActionButton text="Get started" />
